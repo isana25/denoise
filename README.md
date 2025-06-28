@@ -2,12 +2,16 @@
 
 ## Overview
 This project demonstrates the training and deployment of a denoising autoencoder on 100 grayscale images (64×64). It includes:
-- A **Colab notebook** for model development, evaluation, and analysis.  
+- A **Jupyter notebook** for model development, evaluation, and analysis.  
 - A **Gradio web application** for interactive denoising.
+
+## Links
+- **Colab Notebook:** [Open in Google Colab](https://colab.research.google.com/drive/1RQAEGP4WZEIUxHyyw-8mgFmq6UF-DWXe?usp=sharing)  
+- **Gradio App (Hugging Face Space):** [Try it here](https://huggingface.co/spaces/isana25/denoise)
 
 ## What It Does
 
-### 1. Colab Notebook
+### 1. Jupyter Notebook
 - **Data Preparation:**  
   - Fetches the Olivetti Faces dataset (400 × 64×64 grayscale images).  
   - Randomly samples 100 images, splits into 80% train / 20% test.  
@@ -27,8 +31,8 @@ This project demonstrates the training and deployment of a denoising autoencoder
 - **Interactive Interface:**  
   - Upload any image (grayscale or color).  
   - Displays three outputs:  
-    1. **Original** (resized to 64×64 grayscale)  
-    2. **Noisy** (Gaussian-corrupted)  
+    1. **Original** (resized to 128×128 for display)  
+    2. **Noisy** (Gaussian-corrupted, σ=0.1)  
     3. **Reconstructed** (denoised by the autoencoder)  
 - **Deployment:**  
   - Simple `app.py` script and `requirements.txt` file enable one-step launch and public sharing.
@@ -45,15 +49,10 @@ This project demonstrates the training and deployment of a denoising autoencoder
   - **Gradio** for the interactive web interface  
 
 ## Analysis & Observations
-- **Reconstruction Error:**  
-  - **Train MSE:** Low, indicating strong fitting on training data.  
-  - **Test MSE:** Very close to train MSE, demonstrating good generalization.  
-- **Loss Curves:**  
-  - Smooth convergence by 50 epochs.  
-  - Minimal gap between training and validation curves shows limited overfitting.  
-- **Visual Quality:**  
-  - Effective noise removal while preserving key features and textures.  
-  - Slight blurring of very fine details suggests exploring perceptual (SSIM) or adversarial losses in future work.
+- **Noise Removal:** The model cleans up most of the noise while keeping faces recognizable and clear.  
+- **Consistent Performance:** Training and test errors are both low and nearly the same, which tells us the model learned useful patterns and works well on new images.  
+- **Smooth Learning Curve:** The loss steadily went down during training without large jumps or gaps, so it didn’t overfit or underfit.  
+- **Visual Quality:** Reconstructed images look sharp in general, although very fine details can appear slightly blurred. Trying different loss functions (like SSIM) might help bring back those tiny details.
 
 **Conclusion:**  
 The Residual U-Net autoencoder exhibits strong denoising performance and generalization. Future enhancements could include multi-noise conditioning, alternative loss functions, or extension to color images and higher resolutions.
