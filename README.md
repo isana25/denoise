@@ -2,12 +2,12 @@
 
 ## Overview
 This project demonstrates the training and deployment of a denoising autoencoder on 100 grayscale images (64×64). It includes:
-- A **Jupyter notebook** for model development, evaluation, and analysis.  
+- A **Colab notebook** for model development, evaluation, and analysis.  
 - A **Gradio web application** for interactive denoising.
 
 ## What It Does
 
-### 1. Jupyter Notebook
+### 1. Colab Notebook
 - **Data Preparation:**  
   - Fetches the Olivetti Faces dataset (400 × 64×64 grayscale images).  
   - Randomly samples 100 images, splits into 80% train / 20% test.  
